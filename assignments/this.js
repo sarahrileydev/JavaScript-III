@@ -13,14 +13,33 @@
 
 // code example for Window Binding
 
+function speak(name) {
+  console.log(this);
+  return name;
+}
+speak("sarah");
+
 // Principle 2
 
 // code example for Implicit Binding
+
+const person = {
+  name: "Sarah",
+  food: "nachos",
+  eat: function() {
+    return `${this.name} loves ${this.food}`;
+  }
+}
+
+console.log(person.eat());
 
 // Principle 3
 
 // code example for New Binding
 
+
+
 // Principle 4
 
 // code example for Explicit Binding
+
