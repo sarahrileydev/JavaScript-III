@@ -37,9 +37,24 @@ console.log(person.eat());
 
 // code example for New Binding
 
+function Animal(food) {
+  this.food = food;
+  this.eat = function() {
+    console.log(`This animal likes to eat ${this.food}`);
+  }
+}
+
+const monkey = new Animal('banana');
+const parrot = new Animal('cracker');
+
+
+monkey.eat();
+parrot.eat();
 
 
 // Principle 4
 
 // code example for Explicit Binding
 
+monkey.eat.call(parrot);
+parrot.eat.call(monkey);

@@ -75,23 +75,24 @@ function Hero(avatar) {
 }
 
 Hero.prototype = Object.create(Humanoid.prototype);
-Hero.prototype.health = function () {
-  if (healthPoints <= 0)
-  return `${this.name} took damage!`;
+
+Hero.prototype.hp = function () {
+  if (this.healthPoints <= 0){
+     return this.destroy();
+  }else{
+    return "Still alive!";
+  }
 };
 
 function Villain(avatar) {
   this.team = avatar.team;
   this.weapons = avatar.weapons;
   this.language = avatar.language;
-  Humanoid.call(this, avatar);
+  Hero.call(this, avatar);
 }
 
-Villain.prototype = Object.create(Humanoid.prototype);
-Villain.prototype.health = function () {
-  if (healthPoints <= 0)
-  return `${this.name} took damage!`;
-};
+Villain.prototype = Object.create(Hero.prototype);
+
 
 
 /*
@@ -197,7 +198,8 @@ console.log(archer.language); // Elvish
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
 console.log(mage.takeDamage()); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-
+console.log(good.hp());
+console.log(bad.hp())
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
